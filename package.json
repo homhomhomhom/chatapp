@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon ./index.js --exec babel-node -e js",
     "start-dev": "nodemon .index.js --exec -e js",
-    "test": "DEBUG=* nodemon ./index.js --exec babel-node -e js"
+    "test": "DEBUG=* nodemon ./index.js --exec -e js"
   },
   "author": "Emmanuel Henri",
   "license": "ISC",

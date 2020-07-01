@@ -58,4 +58,4 @@ app.get('/', (req, res) => {
 
     res.send('ok hij doet t...');
 
-}
+});

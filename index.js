@@ -45,7 +45,7 @@ tech.on('connection', (socket) => {
     socket.on('join', (data) => {
         socket.join(data.room);
         tech.in(data.room).emit('message', `New user joined ${data.room} room!`);
-    })
+    });
 
     socket.on('message', (data) => {
         console.log(`message: ${data.msg}`);
@@ -56,8 +56,8 @@ tech.on('connection', (socket) => {
         console.log('user disconnected');
 
         tech.emit('message', 'user disconnected');  
-    })
-})
+    });
+});
 
 
 // const express = require('express');

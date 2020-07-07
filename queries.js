@@ -7,6 +7,7 @@ const client = new pg.Client({
 });
 client.connect();
 
+
 const insertChats = (request) => {
     const data = request;
 

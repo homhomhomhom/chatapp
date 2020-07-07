@@ -49,9 +49,11 @@ tech.on('connection', (socket) => {
 
     socket.on('message', (data) => {
         console.log(`message: ${data.msg}`);
+        
+        
+        tech.in(data.room).emit('message', data.msg);
         db.insertChats(data);
         db.getChats.then((res) => console.log(res))
-        tech.in(data.room).emit('message', data.msg);
     });
 
     socket.on('disconnect', () => {

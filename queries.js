@@ -19,7 +19,7 @@ const insertChats = (request) => {
 }
 
 const getChats = new Promise((resolve, reject) => {
-    client.query('SELECT * FROM chats')
+    client.query('SELECT COUNT(*) FROM chats')
     .then(result => {
         resolve(result.rows);
     })

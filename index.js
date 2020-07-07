@@ -49,6 +49,7 @@ tech.on('connection', (socket) => {
 
     socket.on('message', (data) => {
         console.log(`message: ${data.msg}`);
+        db.insertChats(data.msg);
         tech.in(data.room).emit('message', data.msg);
     });
 

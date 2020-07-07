@@ -12,12 +12,10 @@ const insertChats = (request) => {
     const data = request;
 
     client.query('INSERT INTO chats (user_name, room, chat_text, date_time) VALUES ($1, $2, $3, NOW())',
-    [data.name, data.room, data.text], (error, results) => {
-        if (error) {
-            throw error
-        }
-        console.log(`Chat added to room: ${data.room}`);
-    })
+    [data.name, data.room, data.msg] )
+    .then((res) => console.log(res.rows))
+    .catch((err) => console.log(err.message));
+    
 }
 
 const getChats = new Promise((resolve, reject) => {

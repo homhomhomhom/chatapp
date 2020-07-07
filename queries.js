@@ -13,7 +13,7 @@ const insertChats = (request) => {
 
     client.query('INSERT INTO chats (user_name, room, chat_text, date_time) VALUES ($1, $2, $3, NOW())',
     [data.name, data.room, data.msg] )
-    .then((res) => console.log(res.rows))
+    .then((res) => console.log(res))
     .catch((err) => console.log(err.message));
     
 }

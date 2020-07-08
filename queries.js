@@ -20,7 +20,7 @@ const insertChats = (request) => {
 
 const getChats = (roomName) => {
     return new Promise((resolve, reject) => {
-        client.query('SELECT * FROM chats')
+        client.query("SELECT * FROM chats WHERE room = '"+roomName+"' ORDER BY date_time ASC;")
         .then(result => {
             resolve(result.rows);
         })

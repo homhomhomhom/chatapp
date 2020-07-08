@@ -50,17 +50,38 @@ const tech = io.of('/tech');
 tech.on('connection', (socket) => {
     socket.on('join', (data) => {
         socket.join(data.room);
-        tech.in(data.room).emit('message', `New user joined ${data.room} room!`);
+
+        db.getChats(data.room).then( val => {
+            
+            tech.to(socket.id).emit('historyChats',val);
+            
+            tech.in(data.room).emit('singleMessage', `${data.user} joined ${data.room} room!`)
+
+        // tech.in(data.room).emit('message', `New user joined ${data.room} room!`);
+
+        });
     });
 
     socket.on('message', (data) => {
-        console.log(`message: ${data.msg}`);
+        console.log(`message ${data.msg}`);
+
+        var message = {
+            user: data.user,
+            room: data.room,
+            msg: data.msg
+        };
+        let insert = db.insertChats(message);
+        tech.in(data.room).emit('message', message);
+    })
+
+    // socket.on('message', (data) => {
+    //     console.log(`message: ${data.msg}`);
         
         
-        tech.in(data.room).emit('message', data.msg);
-        db.insertChats(data);
-        db.getChats.then((res) => console.log(res))
-    });
+    //     tech.in(data.room).emit('message', data.msg);
+    //     db.insertChats(data);
+    //     db.getChats.then((res) => console.log(res))
+    // });
 
     socket.on('disconnect', () => {
         console.log('user disconnected');

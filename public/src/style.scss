@@ -18,6 +18,11 @@
     height: 800px;
 }
 
-.wide{
-    width: 100%;
+.roomlist{
+    height: 50px;
+    background-color: $grey;
+}
+
+.roomlist:hover{
+    background-color: $greyhover;
 }

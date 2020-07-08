@@ -1,1 +1,23 @@
-$black: #313131;
+@import 'base';
+
+.black{
+    width: 100%;
+    height: 100px;
+    background-color: $black;
+}
+
+.right{
+    float: right;
+}
+
+.grey{
+    background-color: $grey;
+}
+
+.tall{
+    height: 800px;
+}
+
+.wide{
+    width: 100%;
+}

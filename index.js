@@ -13,10 +13,15 @@
 //     res.sendFile(__dirname + '/public/index.html');
 // });
 const db = require('./queries');
-const app = require('express')();   
+const express = require('express');
+const app = express();  
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const port = process.env.PORT || 3000;
+
+
+app.use(express.static(__dirname + '/public'));
+
 
 server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
@@ -37,6 +42,7 @@ app.get('/swift', (req, res) => {
 app.get('/css', (req, res) => {
     res.sendFile(__dirname + '/public/css.html');
 });
+
 
 // tech namespace
 const tech = io.of('/tech');
